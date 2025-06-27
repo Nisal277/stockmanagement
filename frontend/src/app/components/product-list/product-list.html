@@ -1,20 +1,43 @@
 <h2>Product List</h2>
 
-<table border="1">
+<table border="1" *ngIf="products.length > 0">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Quantity</th>
       <th>Price</th>
+      <th *ngIf="editMode">Actions</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of products">
-      <td>{{ product.name }}</td>
-      <td>{{ product.description }}</td>
-      <td>{{ product.quantity }}</td>
-      <td>{{ product.price }}</td>
+      <td>
+        <input *ngIf="editMode" [(ngModel)]="product.name" />
+        <span *ngIf="!editMode">{{ product.name }}</span>
+      </td>
+      <td>
+        <input *ngIf="editMode" [(ngModel)]="product.description" />
+        <span *ngIf="!editMode">{{ product.description }}</span>
+      </td>
+      <td>
+        <input *ngIf="editMode" type="number" [(ngModel)]="product.quantity" />
+        <span *ngIf="!editMode">{{ product.quantity }}</span>
+      </td>
+      <td>
+        <input *ngIf="editMode" type="number" [(ngModel)]="product.price" />
+        <span *ngIf="!editMode">{{ product.price }}</span>
+      </td>
+      <td *ngIf="editMode">
+        <button (click)="saveProduct(product)">Save</button>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<!-- Edit Button -->
+<button *ngIf="!editMode && products.length > 0" (click)="enableEdit()">Edit Products</button>
+
+
+
+

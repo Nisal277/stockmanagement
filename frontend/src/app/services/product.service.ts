@@ -18,6 +18,11 @@ export class ProductService {
   return this.http.get(this.baseUrl);
   }
 
+  updateProduct(id: string , product: any): Observable<any>
+  {
+    return this.http.put(`${this.baseUrl}/${id}`, product);
+  }
+
 
 }
 
