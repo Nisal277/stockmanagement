@@ -10,9 +10,17 @@ import { Router } from '@angular/router';
 export class Home {
   constructor(private router: Router){}
 
-  onAddProduct() {
+  onAddProduct() 
+  {
     this.router.navigate(['/add-product']);
   }
+
+onViewProducts()
+{
+  this.router.navigate(["/product-list"]);
+}
+
+
 
 
 }
