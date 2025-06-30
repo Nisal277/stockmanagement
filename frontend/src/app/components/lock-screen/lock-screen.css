@@ -82,7 +82,7 @@
   background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,255,255,1), rgba(255,255,255,0.2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmer 3s infinite;
+  animation: shimmer 4s infinite;
   font-weight: 300;
 }
 
