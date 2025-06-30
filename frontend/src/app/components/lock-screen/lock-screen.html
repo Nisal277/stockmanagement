@@ -1,0 +1,19 @@
+<div class="lock-screen">
+  <div class="datetime">
+    <div class="time">{{ time }}</div>
+    <div class="date">{{ date }}</div>
+  </div>
+
+  <div class="slider-container">
+    <input
+      type="range"
+      min="0"
+      max="100"
+      [(ngModel)]="dragProgress"
+      (input)="onSlide($event)"
+      class="slider"
+    />
+    <div class="slide-label">Slide to Unlock →</div>
+  </div>
+</div>
+

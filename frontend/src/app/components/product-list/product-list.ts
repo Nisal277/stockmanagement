@@ -48,6 +48,27 @@ export class ProductList implements OnInit
   });
 }
 
+deleteProduct(product: any)
+{
+  const confirmed = confirm(`Are you sure you want to delete "${product.name}"?`);
+  if (!confirmed) return;
+
+  this.productService.deleteProduct(product.id).subscribe
+  ({
+    next: () =>
+    {
+      alert('Product deleted successfully');
+      this.products = this.products.filter(p => p.id !== product.id);
+
+    },
+
+    error: (err) =>
+    {
+      console.error('Error deleting product:', err);
+    }
+  });
+}
+
 
 
 }

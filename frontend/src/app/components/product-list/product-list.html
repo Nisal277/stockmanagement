@@ -29,7 +29,8 @@
         <span *ngIf="!editMode">{{ product.price }}</span>
       </td>
       <td *ngIf="editMode">
-        <button (click)="saveProduct(product)">Save</button>
+        <button (click)="saveProduct(product)">💾Save</button>
+        <button (click)="deleteProduct(product)">🗑️ Delete</button>
       </td>
     </tr>
   </tbody>

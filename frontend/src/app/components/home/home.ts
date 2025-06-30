@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ProductList } from '../product-list/product-list';
+
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [ProductList],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrl: './home.css',
+  
 })
 export class Home {
+  
   constructor(private router: Router){}
 
   onAddProduct() 
