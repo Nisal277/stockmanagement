@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ProductList } from '../product-list/product-list';
@@ -10,9 +10,21 @@ import { ProductList } from '../product-list/product-list';
   styleUrl: './home.css',
   
 })
-export class Home {
+export class Home implements OnInit  {
   
+  time: string = '';
+
   constructor(private router: Router){}
+
+  ngOnInit(): void {
+    this.updateTime();
+    setInterval(() => this.updateTime(), 1000);
+  }
+
+   updateTime() {
+    const now = new Date();
+    this.time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
 
   onAddProduct() 
   {
@@ -23,8 +35,6 @@ onViewProducts()
 {
   this.router.navigate(["/product-list"]);
 }
-
-
 
 
 }

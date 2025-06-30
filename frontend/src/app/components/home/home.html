@@ -1,9 +1,24 @@
-<div class="home-container">
-    <h1>Welcome to the stock management system</h1>
-    <p>Manage your products and inventory easily.</p>
-
-    <button class="add-btn" (click)="onAddProduct()">Add Product</button>
-    <button class="add-btn" (click)="onViewProducts()">Display Products</button>
-    
-    
+<div class="status-bar">
+  <div class="status-left">
+    <span class="time">{{ time }}</span>
+  </div>
+  <div class="status-right">
+    <span class="status-icon">📶</span>
+    <span class="status-icon">🔋</span>
+  </div>
 </div>
+
+<div class="home-container">
+  <div class="app-grid">
+    <div class="app-icon" (click)="onAddProduct()">
+      <div class="icon-circle add-icon">＋</div>
+      <div class="icon-label">Add Product</div>
+    </div>
+
+    <div class="app-icon" (click)="onViewProducts()">
+      <div class="icon-circle list-icon">📋</div>
+      <div class="icon-label">View Products</div>
+    </div>
+  </div>
+</div>
+

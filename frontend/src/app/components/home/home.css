@@ -1,19 +1,122 @@
 :host {
   display: block;
   height: 100vh;
-  background: linear-gradient(-45deg, #ff6b6b, #f8e71c, #00c9ff, #92fe9d);
+  background: linear-gradient(-45deg, #0d1b2a, #1b263b, #274c77, #415a77);
   background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
+  animation: gradientShift 15s ease infinite;
   color: white;
+  font-family: 'Rubik', 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
+
+/* Status Bar */
+
+.status-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  font-size: 14px;
+  z-index: 100;
+  color: white;
+  user-select: none;
+}
+
+.status-left .time {
+  font-weight: 500;
+}
+
+.status-right .status-icon {
+  margin-left: 12px;
+  font-size: 16px;
+}
+
+/* Main container */
 
 .home-container {
-  text-align: center;
-  padding-top: 150px;
-  font-family: Arial, sans-serif;
+  padding-top: 50px; /* space for status bar */
+  height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes gradientAnimation {
+/* App Grid */
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 40px;
+  max-width: 500px;
+  width: 90%;
+}
+
+/* Each app icon */
+
+.app-icon {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  user-select: none;
+}
+
+.app-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.5);
+}
+
+/* Icon circle */
+
+.icon-circle {
+  font-size: 48px;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  margin: 0 auto 15px auto;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  transition: box-shadow 0.25s ease;
+}
+
+/* Different colors for each icon */
+
+.add-icon {
+  background: #28a745;
+  box-shadow: 0 6px 20px #28a745aa;
+}
+
+.list-icon {
+  background: #007bff;
+  box-shadow: 0 6px 20px #007bffaa;
+}
+
+/* Label text */
+
+.icon-label {
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Gradient animation */
+
+@keyframes gradientShift {
   0% {
     background-position: 0% 50%;
   }
@@ -25,30 +128,28 @@
   }
 }
 
-.home-container h1 {
-  font-size: 2.5rem;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+/* Fade + Scale animation */
+@keyframes iconPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
-.home-container p {
-  font-size: 1.2rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+/* Animate icons on page load */
+.app-icon {
+  opacity: 0;
+  animation: iconPopIn 0.6s ease forwards;
 }
 
-.add-btn {
-  margin-top: 30px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  background-color: #007bff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+/* Delay each icon slightly for cascading effect */
+.app-icon:nth-child(1) {
+  animation-delay: 0.2s;
 }
-
-.add-btn:hover {
-  background-color: #0056b3;
+.app-icon:nth-child(2) {
+  animation-delay: 0.4s;
 }
