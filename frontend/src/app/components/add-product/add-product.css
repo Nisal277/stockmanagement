@@ -1,46 +1,110 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh; /* fixes scroll issue on mobile and some browsers */
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: url('https://images.unsplash.com/photo-1517495306984-f84210f9daa8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2t5fGVufDB8fDB8fHww')
+    no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container */
 .form-container {
   width: 400px;
-  margin: 80px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  font-family: Arial, sans-serif;
+  max-width: 90%;
+  padding: 35px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #958e8e;
+  animation: fadeIn 0.6s ease;
+  box-sizing: border-box;
 }
 
-.form-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
+/* Form layout */
 form {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Typography */
+h2 {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #110064ee;
+  text-align: center;
 }
 
 label {
-  margin-top: 10px;
-  font-weight: bold;
+  text-align: left;
+  margin-top: 12px;
+  font-weight: 500;
+  color: #4e4e4e;
+  font-size: 0.95rem;
 }
 
+/* Inputs */
 input {
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: rgb(128, 121, 121);
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  box-sizing: border-box;
 }
 
+input::placeholder {
+  color: #928a8a;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Button */
 button {
+  width: 100%;
+  padding: 14px;
   margin-top: 20px;
-  padding: 12px;
-  background-color: #007bff;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
   color: white;
   border: none;
   font-weight: bold;
-  border-radius: 5px;
+  font-size: 1rem;
+  border-radius: 10px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background: linear-gradient(to right, #0052cc, #00aaff);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
